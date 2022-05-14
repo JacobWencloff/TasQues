@@ -9,9 +9,9 @@ export default function DevSearch() {
     const handleSubmitSearch = (event) =>{
       event.preventDefault()
     //   console.log(event.target)
-      console.log(requestedSorce)
+      // console.log(requestedSorce)
       const searchString = searchParam.replace(/ /g, '+')
-      console.log(searchString)
+      // console.log(searchString)
   
       const options = {
         method: 'GET',
@@ -32,7 +32,7 @@ export default function DevSearch() {
   
     const handleOnChange = (event) =>{
       event.preventDefault()
-      console.log(event.target.value)
+      // console.log(event.target.value)
       setSearchParam(event.target.value)
     }
     const handleSourceChange = (event) =>{
@@ -52,7 +52,7 @@ export default function DevSearch() {
     return (
       <div className="App">
         <form onSubmit={handleSubmitSearch}>
-          <input onChange={handleOnChange} type="text" value={searchParam}></input>
+          <input onChange={handleOnChange} type="text" placeholder='Please enter search criteria' value={searchParam} ></input>
         </form>
         <button onClick={handleSourceChange}>stackoverflow</button>
         <button onClick={handleSourceChange}>MDN</button>
