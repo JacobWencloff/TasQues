@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 export default function ToDoList() {
     const [listItem, setNewListItem] = useState('')
-    const [list, setNewList] = useState(['Please Enter More Content'])
+    const [list, setNewList] = useState([''])
 
     const handleChange = (event) => {
         event.preventDefault()
@@ -13,21 +13,21 @@ export default function ToDoList() {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-            let listCopy = [...list]
-            listCopy.push(listItem)
-            setNewList(listCopy)
-            setNewListItem('')
-        
+        let listCopy = [...list]
+        listCopy.push(listItem)
+        setNewList(listCopy)
+        setNewListItem('')
+      
     }
-    
+
+
     const mappedList = list.map((item, i) => {
-        console.log(item)
         return (
             <li>{item}</li>
-            )
-        })
-        
-        // console.log(mappedList)
+        )
+    })
+
+
 
     return (
         <div>
