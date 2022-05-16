@@ -8,7 +8,6 @@ export default function ToDoList() {
     const handleChange = (event) => {
         event.preventDefault()
         setNewListItem(event.target.value)
-
     }
 
     const handleSubmit = (event) => {
@@ -17,7 +16,6 @@ export default function ToDoList() {
         listCopy.push(listItem)
         setNewList(listCopy)
         setNewListItem('')
-      
     }
 
 

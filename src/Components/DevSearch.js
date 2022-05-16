@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
-import {Button, Alert, ListGroup, ListGroupItem} from 'reactstrap'
+import { Button, Alert, ListGroup, ListGroupItem, Accordion, AccordionHeader, AccordionItem, AccordionBody } from 'reactstrap'
 
 export default function DevSearch() {
   const [searchParam, setSearchParam] = useState('')
@@ -29,7 +29,7 @@ export default function DevSearch() {
   
       `, options)
       .then(response => response.json())
-      .then(data=> setSearchData(data.results))
+      .then(data => setSearchData(data.results))
   }
 
   // the onChange event updates the text field the user types into
@@ -43,7 +43,7 @@ export default function DevSearch() {
 
 
   //handleSourceChange allows the user to change the site they want to search from
- 
+
   const handleSourceChange = (event) => {
     // console.log(event.target.innerText)
     const searchSite = event.target.innerText
@@ -56,20 +56,29 @@ export default function DevSearch() {
     } else if (searchSite === "react.js Docs") {
       requestedSorce = "reactjs.org"
     }
-   
+
     // console.log(requestedSorce)
   }
 
-  const searchResults = searchData.map((item, i) =>{
-    console.log(item.link)
-    return(
-      <ListGroupItem href={`${item.link}`}>{item.title}</ListGroupItem>
+  const searchResults = searchData.map((item, i) => {
+    console.log(item.description)
+    return (
+      <Accordion flush toggle={function noRefCheck(){}}>
+        <AccordionItem>
+          <AccordionHeader targetId={i.toString()}>
+            <a href={item.link} target="_blank">{item.title}</a>
+          </AccordionHeader>
+          <AccordionBody accordionId={i.toString()}>
+            Hello World
+          {item.discription}
+          </AccordionBody>
+        </AccordionItem>
+      </Accordion>
     )
   })
 
   return (
     <div className="App">
-
       <Button onClick={handleSourceChange} color="primary">stackoverflow</Button>
       <Button onClick={handleSourceChange} color="primary">MDN</Button>
       <Button onClick={handleSourceChange} color="primary">Jquery</Button>
@@ -78,9 +87,13 @@ export default function DevSearch() {
         <input onChange={handleOnChange} type="text" placeholder='Please enter search criteria' value={searchParam} ></input>
         <input type="submit" value="Search!"></input>
       </form>
-      <ListGroup flush>
+
+      <ListGroup>
+
         {searchResults}
       </ListGroup>
+ 
+      
     </div>
   );
 }
