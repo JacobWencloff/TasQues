@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 export default function ToDoList() {
     const [listItem, setNewListItem] = useState('')
-    const [list, setNewList] = useState([''])
+    const [list, setNewList] = useState([])
 
     const handleChange = (event) => {
         event.preventDefault()
