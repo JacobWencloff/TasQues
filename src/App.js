@@ -12,11 +12,11 @@ import Calculator from './Components/Calculator';
 function App() {
   return (
     <div className="App">
-      <nav>
-        <Link to=""><Button>Home</Button></Link>
-        <Link to='/search'><Button>Search</Button></Link>
-        <Link to='/todoList'><Button>ToDo List</Button></Link>
-        <Link to='/calculator'><Button>Calculator</Button></Link>
+      <nav className='nav-main'>
+        <Link to=""><Button className="spacer" >Home</Button></Link>
+        <Link to='/search'><Button className="spacer" >Search</Button></Link>
+        <Link to='/todoList'><Button className="spacer" >ToDo List</Button></Link>
+        <Link to='/calculator'><Button className="spacer" >Calculator</Button></Link>
       </nav>
       <main>
         <Routes>

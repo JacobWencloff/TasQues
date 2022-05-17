@@ -79,18 +79,6 @@ export default function ToDoList() {
         )
     })
 
-
-
-    // const mappedList = list.map((item, i) => {
-    //     return (
-    //         <tr key={item + i}>
-    //             <td>
-    //                 {item}
-    //             </td>
-    //         </tr>
-    //     )
-    // })
-
     const handleToggle = () =>{
         if(ddOpen){
             setDDOpen(false)
