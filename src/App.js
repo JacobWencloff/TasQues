@@ -13,10 +13,10 @@ function App() {
   return (
     <div className="App">
       <nav className='nav-main'>
-        <Link to=""><Button className="spacer" >Home</Button></Link>
-        <Link to='/search'><Button className="spacer" >Search</Button></Link>
-        <Link to='/todoList'><Button className="spacer" >ToDo List</Button></Link>
-        <Link to='/calculator'><Button className="spacer" >Calculator</Button></Link>
+        <Link to=""><Button className="spacer" color="primary">Home</Button></Link>
+        <Link to='/search'><Button className="spacer" color="primary">Search</Button></Link>
+        <Link to='/todoList'><Button className="spacer" color="primary">ToDo List</Button></Link>
+        <Link to='/calculator'><Button className="spacer" color="primary">Calculator</Button></Link>
       </nav>
       <main>
         <Routes>

@@ -76,10 +76,10 @@ export default function DevSearch() {
 
   return (
     <div className="App">
-      <Button className="spacer" onClick={handleSourceChange} color="primary">stackoverflow</Button>
-      <Button className="spacer" onClick={handleSourceChange} color="primary">MDN</Button>
-      <Button className="spacer" onClick={handleSourceChange} color="primary">Jquery</Button>
-      <Button className="spacer" onClick={handleSourceChange} color="primary">React.js Docs</Button>
+      <Button className="spacer" onClick={handleSourceChange} color="info">stackoverflow</Button>
+      <Button className="spacer" onClick={handleSourceChange} color="info">MDN</Button>
+      <Button className="spacer" onClick={handleSourceChange} color="info">Jquery</Button>
+      <Button className="spacer" onClick={handleSourceChange} color="info">React.js Docs</Button>
       <form className="form" onSubmit={handleSubmitSearch}>
         <input onChange={handleOnChange} type="text" placeholder='Please enter search criteria' value={searchParam} ></input>
         <input type="submit" value="Search!"></input>
