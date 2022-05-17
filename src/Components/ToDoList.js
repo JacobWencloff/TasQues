@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
+import { Table } from 'reactstrap'
 
 export default function ToDoList() {
     const [listItem, setNewListItem] = useState('')
@@ -21,7 +22,7 @@ export default function ToDoList() {
 
     const mappedList = list.map((item, i) => {
         return (
-            <li>{item}</li>
+            <tr>{item}</tr>
         )
     })
 
@@ -33,9 +34,13 @@ export default function ToDoList() {
                 <input onChange={handleChange} type="text" value={listItem} placeholder='Enter New Item...'></input>
                 <input type='submit' value="submit"></input>
             </form>
-            <ul>
+            <Table>
+                <tr>
+                    <th>Header</th>
+                </tr>
                 {mappedList}
-            </ul>
+            </Table>
+           
         </div>
     )
 }

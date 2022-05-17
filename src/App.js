@@ -13,10 +13,10 @@ function App() {
   return (
     <div className="App">
       <nav>
-        <Link to="">|   Home   |</Link>
-        <Link to='/search'>|   Developer Search Engine   |</Link>
-        <Link to='/todoList'>|   ToDo List   |</Link>
-        <Link to='/calculator'>|   calculator   |</Link>
+        <Link to=""><Button>Home</Button></Link>
+        <Link to='/search'><Button>Search</Button></Link>
+        <Link to='/todoList'><Button>ToDo List</Button></Link>
+        <Link to='/calculator'><Button>Calculator</Button></Link>
       </nav>
       <main>
         <Routes>
