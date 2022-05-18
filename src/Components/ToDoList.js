@@ -5,13 +5,17 @@ import { Table, Dropdown, DropdownItem, DropdownToggle, DropdownMenu, Alert  } f
 
 
 export default function ToDoList() {
+    //stores the user input from the text input field
     const [listItem, setNewListItem] = useState('')
+    //stores a data set for each sub-section of the table
     const [projectList, setNewProjectList] = useState([])
     const [weeklyList, setNewWeeklyList] = useState([])
     const [dailyList, setNewDailyList] = useState([])
+    //stores the selected entry type to determin the apropraite position of a data point
+    const [entryType, setEntryType] = useState(null)
+    //toggles the dropdown feature and the error message alert
     const [ddOpen, setDDOpen] = useState(false)
     const [alertToggle, setAlertToggle] = useState(false)
-    const [entryType, setEntryType] = useState(null)
 
     const handleChange = (event) => {
         event.preventDefault()
@@ -20,6 +24,7 @@ export default function ToDoList() {
 
     const handleSubmit = (event) => {
         event.preventDefault()
+        //Uses states defined above to determin what list should be updated with a new list item
         if (entryType === 'Projects') {
             let projectListCopy = [...projectList]
             projectListCopy.push(listItem)
@@ -35,12 +40,12 @@ export default function ToDoList() {
         }else if(entryType === null){
             toggleAlert()
         }
-
-
+        //resets input field to an empty box
         setNewListItem('')
 
     }
 
+    //Sets the entry type state to the approprate variable to be used in the handle submit function
     const handleEntryType = (e) => {
         e.preventDefault()
         let target = e.target.innerText
@@ -56,6 +61,7 @@ export default function ToDoList() {
         }
     }
 
+    //The following map functions format each list state to be displayed to the user and a table row in the approprate sub-section
     const mappedDailyList = dailyList.map((item, i) => {
         return (
             <tr key={item + i}>
@@ -84,6 +90,7 @@ export default function ToDoList() {
         )
     })
 
+    //Sets the boolean states for the DropDown menu
     const handleToggle = () => {
         if (ddOpen) {
             setDDOpen(false)
@@ -91,6 +98,7 @@ export default function ToDoList() {
             setDDOpen(true)
         }
     }
+    //Sets the boolean state for the Alert Box
     const toggleAlert = () =>{
         if(alertToggle){
             setAlertToggle(false)
@@ -104,6 +112,7 @@ export default function ToDoList() {
                 <Alert dismissible color="warning" isOpen={alertToggle} toggle={toggleAlert} >Please select an entry type and try again!</Alert>
             </div>
             <form is onSubmit={handleSubmit}>
+
                 <div className='drop-container'>
                     <Dropdown isOpen={ddOpen} toggle={handleToggle}>
                         <DropdownToggle caret>
@@ -122,9 +131,11 @@ export default function ToDoList() {
                         </DropdownMenu>
                     </Dropdown>
                 </div>
+
                 <input onChange={handleChange} type="text" value={listItem} placeholder='Enter New Item...'></input>
                 <input type='submit' value="submit"></input>
             </form>
+
             <Table hover>
                 <th>
                     Projects
