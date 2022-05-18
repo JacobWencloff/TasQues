@@ -49,3 +49,20 @@
 .drop-container{
   margin-bottom: 10px;
 }
+.hidden{
+  display: none;
+}
+.displayed{
+  display: unset;
+}
+.test{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap ;
+  justify-content: space-between;
+  height: 100vh;
+}
+a .btn{
+  height: 60px;
+  width: 100px;
+}

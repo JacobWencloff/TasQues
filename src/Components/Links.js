@@ -18,11 +18,11 @@ export default function Links() {
                 <Button color="primary" onClick={handleToggle}>|||</Button>
                 <Offcanvas isOpen={isActive} direction='start'>
                     <OffcanvasBody onClick={handleToggle}>
-                        <div className=''>
-                        <Link to=""><Button color="primary">Home</Button></Link><br/>
-                        <Link to='/search'><Button color="primary">Search</Button></Link><br/>
-                        <Link to='/todoList'><Button color="primary">ToDo List</Button></Link><br/>
-                        <Link to='/calculator'><Button color="primary">Calculator</Button></Link><br/>
+                        <div className='test'>
+                            <Link to=""><Button color="primary">Home</Button></Link><br />
+                            <Link to='/search'><Button color="primary">Search</Button></Link><br />
+                            <Link to='/todoList'><Button color="primary">ToDo List</Button></Link><br />
+                            <Link to='/calculator'><Button color="primary">Calculator</Button></Link><br />
                         </div>
                     </OffcanvasBody>
                 </Offcanvas>
