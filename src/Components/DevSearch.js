@@ -2,19 +2,28 @@ import React from 'react'
 import { useState } from 'react'
 import { Button,
          ListGroup, 
-         ListGroupItem, 
+         ListGroupItem,
+         Spinner, 
          } from 'reactstrap'
 
 export default function DevSearch() {
   const [searchParam, setSearchParam] = useState('')
   const [searchData, setSearchData] = useState([])
-
+  const [activeLoading, setActiveLoading] = useState(false)
 
   let requestedSorce = ""
+
 
   // Function handles search input
   const handleSubmitSearch = (event) => {
     event.preventDefault()
+   
+  //clearning the screen of search results in preporation of the next search
+    setSearchData([])
+    setActiveLoading(true)
+  //Attempting to display a loading animation while waiting for Fetch response
+
+     
     //formats the search string to be approprate for a media query
     const searchString = searchParam.replace(/ /g, '+')
 
@@ -30,23 +39,24 @@ export default function DevSearch() {
     };
 
     fetch(`https://google-search3.p.rapidapi.com/api/v1/search/q=${searchString}&num=100&lr=lang_en&hl=en&cr=US&as_sitesearch=${requestedSorce}/
-  
       `, options)
+
       .then(response => response.json())
-      .then(data => setSearchData(data.results))
+      .then(data => {
+        setSearchData(data.results)
+        setActiveLoading(false)
+      })    
   }
 
   // the onChange event updates the text field the user types into
-
   const handleOnChange = (event) => {
     event.preventDefault()
     setSearchParam(event.target.value)
   }
 
   //handleSourceChange allows the user to change the site they want to search from
-
   const handleSourceChange = (event) => {
-    // console.log(event.target.innerText)
+
     const searchSite = event.target.innerText
     if (searchSite === "stackoverflow") {
       requestedSorce = "stackoverflow.com"
@@ -58,19 +68,21 @@ export default function DevSearch() {
       requestedSorce = "reactjs.org"
     }
 
-    // console.log(requestedSorce)
   }
 
   const searchResults = searchData.map((item, i) => {
     return (
+
       <ListGroupItem action href={item.link} tag='a' target='_blank'>
           {item.title}
       </ListGroupItem>
+
     )
   })
 
   return (
     <div className="App">
+
       <Button className="spacer" onClick={handleSourceChange} color="info">stackoverflow</Button>
       <Button className="spacer" onClick={handleSourceChange} color="info">MDN</Button>
       <Button className="spacer" onClick={handleSourceChange} color="info">Jquery</Button>
@@ -78,8 +90,14 @@ export default function DevSearch() {
 
       <form className="form" onSubmit={handleSubmitSearch}>
         <input onChange={handleOnChange} type="text" placeholder='Please enter search criteria' value={searchParam} ></input>
+        <br />
         <input type="submit" value="Search!"></input>
       </form>
+
+      <div >
+        {activeLoading ? <Spinner /> : '' }
+       
+      </div>
 
       <ListGroup>
         {searchResults}
