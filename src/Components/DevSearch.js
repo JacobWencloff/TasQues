@@ -9,15 +9,16 @@ export default function DevSearch() {
   const [searchParam, setSearchParam] = useState('')
   const [searchData, setSearchData] = useState([])
 
+
   let requestedSorce = ""
 
+  // Function handles search input
   const handleSubmitSearch = (event) => {
     event.preventDefault()
-    //   console.log(event.target)
-    // console.log(requestedSorce)
+    //formats the search string to be approprate for a media query
     const searchString = searchParam.replace(/ /g, '+')
-    // console.log(searchString)
 
+    //set's proper headers for a get request to the Rapid API
     const options = {
       method: 'GET',
       headers: {
@@ -39,11 +40,8 @@ export default function DevSearch() {
 
   const handleOnChange = (event) => {
     event.preventDefault()
-    // console.log(event.target.value)
     setSearchParam(event.target.value)
   }
-
-
 
   //handleSourceChange allows the user to change the site they want to search from
 
@@ -64,13 +62,10 @@ export default function DevSearch() {
   }
 
   const searchResults = searchData.map((item, i) => {
-    
     return (
-      
       <ListGroupItem action href={item.link} tag='a' target='_blank'>
           {item.title}
       </ListGroupItem>
-      
     )
   })
 
@@ -80,6 +75,7 @@ export default function DevSearch() {
       <Button className="spacer" onClick={handleSourceChange} color="info">MDN</Button>
       <Button className="spacer" onClick={handleSourceChange} color="info">Jquery</Button>
       <Button className="spacer" onClick={handleSourceChange} color="info">React.js Docs</Button>
+
       <form className="form" onSubmit={handleSubmitSearch}>
         <input onChange={handleOnChange} type="text" placeholder='Please enter search criteria' value={searchParam} ></input>
         <input type="submit" value="Search!"></input>
@@ -89,8 +85,6 @@ export default function DevSearch() {
         {searchResults}
       </ListGroup>
 
- 
-      
     </div>
   );
 }

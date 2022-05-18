@@ -18,6 +18,7 @@ function App() {
         <Link to='/todoList'><Button className="spacer" color="primary">ToDo List</Button></Link>
         <Link to='/calculator'><Button className="spacer" color="primary">Calculator</Button></Link>
       </nav>
+
       <main>
         <Routes>
           <Route path='' element={<Home />} />
