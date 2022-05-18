@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import { Dropdown, DropdownItem, DropdownToggle, DropdownMenu, Button } from 'reactstrap'
+import { Button, Offcanvas, OffcanvasBody } from 'reactstrap'
 import { useState } from 'react'
 export default function Links() {
     const [isActive, setIsActive] = useState(false)
@@ -15,25 +15,17 @@ export default function Links() {
     return (
         <div>
             <nav className='nav-main'>
-                <Dropdown isOpen={isActive} direction='right' toggle={handleToggle}>
-                    <DropdownToggle caret>
-                        Navigation
-                    </DropdownToggle>
-                    <DropdownMenu >
-                        <DropdownItem>
-                            <Link to=""><Button color="primary">Home</Button></Link>
-                        </DropdownItem>
-                        <DropdownItem>
-                            <Link to='/search'><Button color="primary">Search</Button></Link>
-                        </DropdownItem>
-                        <DropdownItem>
-                            <Link to='/todoList'><Button color="primary">ToDo List</Button></Link>
-                        </DropdownItem>
-                        <DropdownItem>
-                            <Link to='/calculator'><Button color="primary">Calculator</Button></Link>
-                        </DropdownItem>
-                    </DropdownMenu>
-                </Dropdown>
+                <Button color="primary" onClick={handleToggle}>|||</Button>
+                <Offcanvas isOpen={isActive} direction='start'>
+                    <OffcanvasBody onClick={handleToggle}>
+                        <div className=''>
+                        <Link to=""><Button color="primary">Home</Button></Link><br/>
+                        <Link to='/search'><Button color="primary">Search</Button></Link><br/>
+                        <Link to='/todoList'><Button color="primary">ToDo List</Button></Link><br/>
+                        <Link to='/calculator'><Button color="primary">Calculator</Button></Link><br/>
+                        </div>
+                    </OffcanvasBody>
+                </Offcanvas>
             </nav>
         </div>
     )
