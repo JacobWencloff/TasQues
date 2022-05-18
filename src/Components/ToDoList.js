@@ -1,7 +1,8 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react'
-import { Table, Dropdown, DropdownItem, DropdownToggle, DropdownMenu } from 'reactstrap'
+import { Table, Dropdown, DropdownItem, DropdownToggle, DropdownMenu, Alert  } from 'reactstrap'
+
 
 export default function ToDoList() {
     const [listItem, setNewListItem] = useState('')
@@ -9,6 +10,7 @@ export default function ToDoList() {
     const [weeklyList, setNewWeeklyList] = useState([])
     const [dailyList, setNewDailyList] = useState([])
     const [ddOpen, setDDOpen] = useState(false)
+    const [alertToggle, setAlertToggle] = useState(false)
     const [entryType, setEntryType] = useState(null)
 
     const handleChange = (event) => {
@@ -30,7 +32,11 @@ export default function ToDoList() {
             let dailyListCopy = [...dailyList]
             dailyListCopy.push(listItem)
             setNewDailyList(dailyListCopy)
+        }else if(entryType === null){
+            toggleAlert()
         }
+
+
         setNewListItem('')
 
     }
@@ -85,10 +91,19 @@ export default function ToDoList() {
             setDDOpen(true)
         }
     }
-
+    const toggleAlert = () =>{
+        if(alertToggle){
+            setAlertToggle(false)
+        }else{
+            setAlertToggle(true)
+        }
+    }
     return (
         <div>
-            <form onSubmit={handleSubmit}>
+            <div >
+                <Alert dismissible color="warning" isOpen={alertToggle} toggle={toggleAlert} >Please select an entry type and try again!</Alert>
+            </div>
+            <form is onSubmit={handleSubmit}>
                 <div className='drop-container'>
                     <Dropdown isOpen={ddOpen} toggle={handleToggle}>
                         <DropdownToggle caret>
