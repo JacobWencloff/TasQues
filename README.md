@@ -29,7 +29,7 @@ Our Todo list is currently in the mid-life of its development, including 3 sub-s
 The calculator component is the most crude portion of our site and definantly needs the most love, currently limiting the user to basic arithmatic.
 
 ## Future Features
----
+
 Future renditions of our Dev Search feature will give the user the ability to add websites to the list of pre-existing sites allowing for user customization of the search engine. Along with the ability to include websites introduced by the user, we would also like to allow more than one website parameter to be used at a time in the search results.
 
 Our ToDo list will have customizable headers along with the ability to create more headers than given to the user by default.
