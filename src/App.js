@@ -17,7 +17,7 @@ function App() {
       <Links/>
       <main>
         <Routes>
-          <Route path='' element={<Home />} />
+          <Route path='/' element={<Home />} />
           <Route path='/search' element={<DevSearch />} />
           <Route path='/todoList' element={<ToDoList />} />
           <Route path='/calculator' element={<Calculator />} />

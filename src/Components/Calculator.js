@@ -3,7 +3,7 @@ import { Button, Alert } from 'reactstrap'
 import { useState } from 'react'
 
 export default function Calculator() {
-  let [functionLine, setFunctionLine] = useState('')
+  let [functionLine, setFunctionLine] = useState(0)
 
   let [operator, setOperator] = useState('+')
 
@@ -11,14 +11,14 @@ export default function Calculator() {
     e.preventDefault()
     let requestedVal = Number(e.target.innerText)
 
-    if(functionLine === ''){
+    if(functionLine === 0){
       setFunctionLine(requestedVal)
     }
-
+    
     if(operator === '+'){
-       setFunctionLine(functionLine + requestedVal)
+      setFunctionLine(functionLine + requestedVal)
     }else if(operator === '-' ){
-       setFunctionLine(functionLine - requestedVal)
+      setFunctionLine(functionLine - requestedVal)
     }else if(operator === 'X'){
       setFunctionLine(functionLine * requestedVal)
     }else if(operator === '/'){
@@ -29,6 +29,7 @@ export default function Calculator() {
     // setFunctionLine(functionLine + requestedVal)
     // console.log(functionLine)
   }
+  console.log(functionLine)
   const handleOp = (e) =>{
     let requestedOp = e.target.innerText
     setOperator(requestedOp)
@@ -53,6 +54,8 @@ export default function Calculator() {
         <Button onClick={handleNum}>7</Button>
         <Button onClick={handleNum}>8</Button>
         <Button onClick={handleNum}>9</Button>
+        <Button onClick={handleOp}>-</Button><br/>
+        <Button onClick={handleOp}>===</Button>
         <Button onClick={handleOp}>+</Button>
       </div>
     </div>
