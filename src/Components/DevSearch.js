@@ -10,8 +10,8 @@ export default function DevSearch() {
   const [searchParam, setSearchParam] = useState('')
   const [searchData, setSearchData] = useState([])
   const [activeLoading, setActiveLoading] = useState(false)
-
-  let requestedSorce = ""
+  const [requestedSorce, setRequestedSource] = useState('')
+ 
 
 
   // Function handles search input
@@ -59,13 +59,13 @@ export default function DevSearch() {
 
     const searchSite = event.target.innerText
     if (searchSite === "stackoverflow") {
-      requestedSorce = "stackoverflow.com"
+      setRequestedSource("stackoverflow.com")
     } else if (searchSite === "MDN") {
-      requestedSorce = "developer.mozilla.org"
+      setRequestedSource("developer.mozilla.org")
     } else if (searchSite === "Jquery") {
-      requestedSorce = "jquery.com"
+      setRequestedSource("jquery.com")
     } else if (searchSite === "react.js Docs") {
-      requestedSorce = "reactjs.org"
+      setRequestedSource("reactjs.org")
     }
 
   }
@@ -82,7 +82,7 @@ export default function DevSearch() {
 
   return (
     <div className="App">
-
+      <h3>Dev-Search</h3>
       <Button className="spacer" onClick={handleSourceChange} color="info">stackoverflow</Button>
       <Button className="spacer" onClick={handleSourceChange} color="info">MDN</Button>
       <Button className="spacer" onClick={handleSourceChange} color="info">Jquery</Button>
@@ -94,7 +94,7 @@ export default function DevSearch() {
         <input type="submit" value="Search!"></input>
       </form>
 
-      <div >
+      <div class="spinner" >
         {activeLoading ? <Spinner /> : '' }
        
       </div>

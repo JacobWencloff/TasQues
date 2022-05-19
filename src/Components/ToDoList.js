@@ -1,7 +1,15 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react'
-import { Table, Dropdown, DropdownItem, DropdownToggle, DropdownMenu, Alert  } from 'reactstrap'
+import {
+    Button,
+    Table,
+    Dropdown,
+    DropdownItem,
+    DropdownToggle,
+    DropdownMenu,
+    Alert,
+} from 'reactstrap'
 
 
 export default function ToDoList() {
@@ -16,6 +24,8 @@ export default function ToDoList() {
     //toggles the dropdown feature and the error message alert
     const [ddOpen, setDDOpen] = useState(false)
     const [alertToggle, setAlertToggle] = useState(false)
+
+    const [ddTitle, setDDTitle] = useState('Select Entry Type')
 
     const handleChange = (event) => {
         event.preventDefault()
@@ -37,12 +47,11 @@ export default function ToDoList() {
             let dailyListCopy = [...dailyList]
             dailyListCopy.push(listItem)
             setNewDailyList(dailyListCopy)
-        }else if(entryType === null){
+        } else if (entryType === null) {
             toggleAlert()
         }
         //resets input field to an empty box
         setNewListItem('')
-
     }
 
     //Sets the entry type state to the approprate variable to be used in the handle submit function
@@ -51,22 +60,38 @@ export default function ToDoList() {
         let target = e.target.innerText
         if (target === 'Projects') {
             setEntryType('Projects')
+            setDDTitle('Project')
             console.log('project selected')
         } else if (target === 'Weekly Goals') {
             setEntryType('Weekly Goals')
+            setDDTitle('Weekly')
             console.log('weekly selected')
         } else if (target === 'Daily Tasks') {
             setEntryType('Daily Tasks')
+            setDDTitle('Daily')
             console.log('Daily selected')
         }
+    }
+
+    const handleEdit =(e) =>{
+           
+    }
+    const handleRemove = () =>{
+        console.log('remove')
     }
 
     //The following map functions format each list state to be displayed to the user and a table row in the approprate sub-section
     const mappedDailyList = dailyList.map((item, i) => {
         return (
             <tr key={item + i}>
-                <td>
-                    {item}
+                <td id={item + i} className='todo-data'>
+                    <div className='todo-content'>
+                        {item}
+                    </div>
+                    <div className='todo-buttons'>
+                        <button onClick={handleEdit}>edit</button>
+                        <button onClick={handleRemove}>remove</button>
+                    </div>
                 </td>
             </tr>
         )
@@ -74,8 +99,10 @@ export default function ToDoList() {
     const mappedWeeklyList = weeklyList.map((item, i) => {
         return (
             <tr key={item + i}>
-                <td>
+                <td id={item + i}>
                     {item}
+                  <button onClick={handleEdit}>edit</button>
+                  <button onClick={handleRemove}>remove</button>
                 </td>
             </tr>
         )
@@ -83,8 +110,10 @@ export default function ToDoList() {
     const mappedProjectList = projectList.map((item, i) => {
         return (
             <tr key={item + i}>
-                <td>
+                <td id={item + i}>
                     {item}
+                    <button onClick={handleEdit}>edit</button>
+                    <button onClick={handleRemove}>remove</button>
                 </td>
             </tr>
         )
@@ -99,13 +128,14 @@ export default function ToDoList() {
         }
     }
     //Sets the boolean state for the Alert Box
-    const toggleAlert = () =>{
-        if(alertToggle){
+    const toggleAlert = () => {
+        if (alertToggle) {
             setAlertToggle(false)
-        }else{
+        } else {
             setAlertToggle(true)
         }
     }
+
     return (
         <div>
             <div >
@@ -116,7 +146,7 @@ export default function ToDoList() {
                 <div className='drop-container'>
                     <Dropdown isOpen={ddOpen} toggle={handleToggle}>
                         <DropdownToggle caret>
-                            Select Type
+                            {ddTitle}
                         </DropdownToggle>
                         <DropdownMenu>
                             <DropdownItem onClick={handleEntryType}>
@@ -140,19 +170,20 @@ export default function ToDoList() {
                 <th>
                     Projects
                 </th>
-                <tbody>
+                <tbody >
                     {mappedProjectList}
+       
                 </tbody>
                 <th>
                     Weekly Goals
                 </th>
-                <tbody>
+                <tbody >
                     {mappedWeeklyList}
                 </tbody>
                 <th>
                     Daily Tasks
                 </th>
-                <tbody>
+                <tbody >
                     {mappedDailyList}
                 </tbody>
             </Table>

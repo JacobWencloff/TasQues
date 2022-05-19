@@ -14,7 +14,7 @@ export default function Links() {
     }
     return (
         <div>
-            <nav className='nav-main'>
+            <nav id='nav' className='nav-main'>
                 <Button color="primary" onClick={handleToggle}>|||</Button>
                 <Offcanvas isOpen={isActive} direction='start'>
                     <OffcanvasBody onClick={handleToggle}>
