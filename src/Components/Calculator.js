@@ -43,20 +43,21 @@ export default function Calculator() {
       </Alert>
       <div>
        
-        <Button onClick={handleNum}>1</Button>
-        <Button onClick={handleNum}>2</Button>
-        <Button onClick={handleNum}>3</Button>
-        <Button onClick={handleOp}>X</Button><br/>
-        <Button onClick={handleNum}>4</Button>
-        <Button onClick={handleNum}>5</Button>
-        <Button onClick={handleNum}>6</Button>
-        <Button onClick={handleOp}>/</Button><br/>
-        <Button onClick={handleNum}>7</Button>
-        <Button onClick={handleNum}>8</Button>
-        <Button onClick={handleNum}>9</Button>
-        <Button onClick={handleOp}>-</Button><br/>
-        <Button onClick={handleOp}>===</Button>
-        <Button onClick={handleOp}>+</Button>
+        <Button className='calc-btn' onClick={handleNum}>1</Button>
+        <Button className='calc-btn' onClick={handleNum}>2</Button>
+        <Button className='calc-btn' onClick={handleNum}>3</Button>
+        <Button className='calc-btn' onClick={handleOp}>X</Button><br/>
+        <Button className='calc-btn' onClick={handleNum}>4</Button>
+        <Button className='calc-btn' onClick={handleNum}>5</Button>
+        <Button className='calc-btn' onClick={handleNum}>6</Button>
+        <Button className='calc-btn' onClick={handleOp}>/</Button><br/>
+        <Button className='calc-btn' onClick={handleNum}>7</Button>
+        <Button className='calc-btn' onClick={handleNum}>8</Button>
+        <Button className='calc-btn' onClick={handleNum}>9</Button>
+        <Button className='calc-btn' onClick={handleOp}>-</Button><br/>
+        <Button className='calc-btn' onClick={handleOp}>CLR</Button>
+        <Button className='calc-btn-equ' onClick={handleOp}>===</Button>
+        <Button className='calc-btn' onClick={handleOp}>+</Button>
       </div>
     </div>
   )

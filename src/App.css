@@ -87,6 +87,14 @@ a .btn{
   text-align: left;
   margin-left: 10vw;
 }
+.calc-btn, .calc-btn-equ{
+  margin: 1px;
+  width: 60px;
+  height: 60px;
+}
+.calc-btn-equ{
+  width: 120px
+}
 @media screen and (min-width:426px){
   .nav-main{
     text-align: left;
